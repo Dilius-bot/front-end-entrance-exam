@@ -474,7 +474,11 @@ h5 {
 
 @media (max-width: 375px) {
     .container {
-        width: 300px;
+        width: 280px;
+    }
+
+    .main-section {
+        width: 100%;
     }
 
     .rectangle-items__rectangle {

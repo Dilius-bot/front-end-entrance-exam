@@ -16,9 +16,11 @@
         <div class="container">
             <div class="buttons">
                 <button class="button edit__button">Редактировать</button>
-                <button class="button download__button">Скачать PDF</button>
+                <button class="button download__button" id="generate-pdf">
+                    Скачать PDF
+                </button>
             </div>
-            <section class="main-section">
+            <section class="main-section" id="content">
                 <div class="main-section__greeting-container">
                     <div class="main-section__photo">
                         <img src="./img/avatar.svg" alt="resume photo" />
@@ -460,5 +462,9 @@
             </section>
         </div>
         <script src="/js/app.js" defer></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+            defer
+        ></script>
     </body>
 </html>

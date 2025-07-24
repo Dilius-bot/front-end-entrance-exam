@@ -1,17 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     const editableElements = document.querySelectorAll(".editable");
     const editButton = document.querySelector(".edit__button");
+    const isSMobile = window.matchMedia("(max-width: 375px)").matches;
+    const isMMobile = window.matchMedia("(max-width: 575px)").matches;
+    const dowloadBtn = document.getElementById("generate-pdf");
     let editMode = false;
-
-    document
-        .querySelector(".download__button")
-        .addEventListener("click", function () {
-            window.print();
-        });
 
     function animationForText(element) {
         element.classList.add("text-animation");
-        setTimeout(() => element.classList.remove("text-animation"), 500);
+        setTimeout(() => element.classList.remove("text-animation"), 200);
     }
 
     editableElements.forEach((el) => {
@@ -39,5 +36,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem(id, currentElement.textContent);
             });
         });
+    });
+
+    dowloadBtn.addEventListener("click", function () {
+        const element = document.getElementById("content");
+
+        const opt = {
+            margin: 10,
+            filename: "GizedtinovDF_resume.pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: {
+                unit: "mm",
+                format: "a4",
+                orientation: "portrait",
+            },
+        };
+        html2pdf().from(element).set(opt).save();
     });
 });
